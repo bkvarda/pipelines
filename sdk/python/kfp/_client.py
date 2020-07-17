@@ -147,7 +147,7 @@ class Client(object):
 
     host = host or ''
     # Preprocess the host endpoint to prevent some common user mistakes.
-    # This should only be done for non-IAP cases (when client_id is None). IAP requires preserving the protocol.
+    # This should only be done for non-IAP and non-inverted proxy host cases. These both require preserving the protocol.
     if not client_id and not self._is_inverse_proxy_host(host):
       host = re.sub(r'^(http|https)://', '', host).rstrip('/')
 
